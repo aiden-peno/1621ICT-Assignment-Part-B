@@ -1,7 +1,7 @@
 <?php
     require_once('./db/queryDb.php');
 
-    // check user is logged in - serve different html if they are
+    // check user is logged in - used to serve different html if they are
     $userLoggedin = isset($_COOKIE["user"]);
 
     if($userLoggedin) {
@@ -13,7 +13,7 @@
             // clear user session
             unset($_COOKIE["user"]); 
             setcookie("user");
-            // Refresh after clearing user
+            // Refresh after clearing user - also prevents sending same request on browser refresh 
             Header('Location: '.$_SERVER['PHP_SELF']);
         }
     }
@@ -25,15 +25,14 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
         
+        // check entered credentials exist in DB
         $validEmail = validateUser($username, $password);
 
         if (count($validEmail) > 0) {
             $failedLogin = false;
-
-            // log user in
-            // set user details in cookies
+            // log user in - set user details in cookies
             setcookie("user", $username, 0);
-            // Refresh after setting user
+            // Refresh after setting user to display new HTML - also prevents sending same request on browser refresh 
             Header('Location: '.$_SERVER['PHP_SELF']);
         } else {
             $failedLogin = true;
@@ -51,6 +50,21 @@
     <!--Font for mobile navigation icons-->
     <script src="https://kit.fontawesome.com/86459535c0.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <?php 
+        // Populate the Email and Password fields with last entered details if login attempt failed.
+        // Doing this with Javascript as I have the test credentials entered by default.
+        if (isset($username) && $username != "") {
+    ?>
+        <script>
+            // wait for document to load to allow overwriting of the default value specified in the html
+            window.onload = function() {
+                document.getElementById("username").value = "<?=$username?>";
+                document.getElementById("password").value = "<?=$password?>";
+            }
+        </script>
+    <?php
+        }
+    ?>
 </head>
 
 <body>
@@ -79,7 +93,6 @@
     </header>
 <?php
     if($userLoggedin) {
-    // if(false) {
 ?>
     <div id='main'>
         <section id="user-details-section">
@@ -117,9 +130,9 @@
             </form>
         </section>
     </div>
-<?php 
+    <?php 
     } else {
-        ?>
+    ?>
     <div id='main' class="center-content">
         <section id="login-section">
             <h2>Please Log In</h2>
@@ -132,18 +145,16 @@
             ?>
             <form action="account.php" method="POST">
                 <label for="username">Email</label>
-                <!-- <input type="text" id="username" name="username" <?php if(isset($_POST["username"])) { echo "value='" . $_POST['username'] . "'"; } ?> required/> -->
-                <input type="text" id="username" name="username" required/>
+                <input type="text" id="username" name="username" value="test" required/>
                 <label for="password">Password</label>
-                <!-- <input type="password" id="password" name="password" <?php if(isset($_POST["password"])) { echo "value='" . $_POST['password'] . "'"; } ?> required/> -->
-                <input type="password" id="password" name="password" required/>
+                <input type="password" id="password" name="password" value="1234" required/>
                 <input type="submit" value="Login" />
             </form>
         </section>  
     </div>
-        <?php
+    <?php
     }
-?>
+    ?>
     <footer id="footer">
         <small><a href="./sitemap.xml">Sitemap</a></small>
         <small id="copy-text">&copy; 2022 - Aiden Peno</small>

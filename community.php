@@ -5,6 +5,7 @@
     // check user is logged in - show post form if they are
     $userLoggedin = isset($_COOKIE["user"]);
 
+    // only show message text if post submission was attempted
     $messageSectionClass = "display-none";
 
     if (isset($_POST["community-form-title"])) {
@@ -22,12 +23,11 @@
             $errorArray = Array();
             // error message string
             $errorMessage = "";
-            // error with file checking flag
+            // error with file checking flag - set to 0 if error occurs
             $uploadOk = 1;
             
             // Check if image file is an actual image or fake image
             $check = getimagesize($_FILES["community-form-image"]["tmp_name"]);
-
             if($check !== false) {
                 $uploadOk = 1;
             } else {
@@ -36,9 +36,13 @@
             }
 
             //check file size
-            if ($_FILES["community-form-image"]["size"] > 1000000) {
+            $fileSizeAllowanceBytes = 1000000;
+            $fileSizeAllowanceKiloBytes = 1000;
+            if ($_FILES["community-form-image"]["size"] > $fileSizeAllowanceBytes) {
+                // get size in kilobytes
                 $size = round($_FILES["community-form-image"]["size"] / 1000);
-                $sizeOver = $size - 1000;
+                // calculate size over allowance
+                $sizeOver = $size - $fileSizeAllowanceKiloBytes;
                 array_push($errorArray, "Your file is too large (".$size."kB - ".$sizeOver."kB over limit).");
                 $uploadOk = 0;
             }
@@ -49,15 +53,18 @@
             // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["community-form-image"]["tmp_name"], $targetFile)) {
-                addCommunityPost($_POST["community-form-title"], $_POST["community-form-description"], $targetFile);
-                $successMessage = "Your post is being uploaded, we will refresh the page when complete!";
+                    // if file successfully stored to server, add the community post to the DB, saving only the image location to DB instead of whole image
+                    addCommunityPost($_POST["community-form-title"], $_POST["community-form-description"], $targetFile);
+                    $successMessage = "Your post is being uploaded, we will refresh the page when complete!";
                 } else {
                     $errorMessage = "Sorry, there was an error uploading your file.";
                 }
             }
         } else {
+            // add community post to DB without image
             addCommunityPost($_POST["community-form-title"], $_POST["community-form-description"], "./images/dolphins_logo.svg");
         }
+        // display appropriate messages by setting classes to message element
         if (isset($errorMessage) && $errorMessage != "") { 
             $messageSectionClass = "community-post-error-messages"; 
         } elseif (isset($successMessage) && $successMessage != "") { 
@@ -76,6 +83,7 @@
     if (isset($_GET["community-search-start-date"])) {
         $searchDate = $_GET["community-search-start-date"];
     }
+    // get community posts from DB with appropriate parameters depending on which fields were populated by user
     if ($searchTerm != "" && $searchDate != ""){
         $communityPosts = getCommunityPosts($searchTerm, $searchDate);
     } elseif($searchDate != "") {
@@ -187,15 +195,13 @@
                 <input type="text" id="community-search-term" name="community-search-term" <?php if (isset($_GET["community-search-term"])) echo "value=\"".$_GET['community-search-term']."\""; ?> />
                 <label for="community-search-start-date">Limit Results From</label>
                 <input type="date" id="community-search-start-date" name="community-search-start-date" <?php if (isset($_GET["community-search-start-date"])) echo "value=\"".$_GET['community-search-start-date']."\""; ?> />
-                <!-- <label for="community-search-end-date">Enter End Date</label>
-                <input type="date" id="community-search-end-date" name="community-search-end-date" /> -->
                 <input type="submit" value="Submit" />
                 <input type="reset" value="Reset Search" onClick="clearUrl('./community.php')" />
             </form>
         </section>
         <section id="community-posts">
             <h2>Posts From the Community (<?=count($communityPosts)?>)</h2>
-            <!-- All images sourced from commons.wikimedia.org -->
+            <!-- All default images sourced from commons.wikimedia.org -->
             <section id="community-post-list">
                 <?php 
                     if (count($communityPosts) == 0) {

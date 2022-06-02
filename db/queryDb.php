@@ -7,6 +7,7 @@
       }
    }
 
+   // Checks if the passed in email exists in the User table
    function checkUserExists($email) {
       $db = new MyDB();
       if(!$db){
@@ -34,6 +35,7 @@
       }
    }
 
+   // basic authentication - ensure the passed in username and password exist in the User table
    function validateUser($username, $password) {
       $db = new MyDB();
       if(!$db){
@@ -56,6 +58,7 @@
       }
    }
 
+   // gets user details from the passed in email
    function getUser($email) {
       $db = new MyDB();
       if(!$db){
@@ -80,6 +83,7 @@
       }
    }
 
+   // gets draw information filtered by the passed in drawCode
    function getDrawInformation($drawCode) {
       $db = new MyDB();
       if(!$db){
@@ -102,6 +106,7 @@
       }
    }
    
+   // gets standings information filtered by the passed in drawCode
    function getStandingsInformation($drawCode) {
       $db = new MyDB();
       if(!$db){
@@ -124,6 +129,7 @@
       }
    }
 
+   // gets community posts according to passed in params. If no params, returns all community posts
    function getCommunityPosts($searchTerm = null, $searchDate = null) {
       $db = new MyDB();
       if(!$db){
@@ -131,6 +137,7 @@
       } else {
       //echo "Opened database successfully\n";
       }
+      // can have no search terms, or just date, or just text, or both date and text
       if ($searchTerm && $searchDate) {
          $sql ='SELECT * FROM COMMUNITY WHERE (TITLE LIKE "%'.$searchTerm.'%" OR DESCRIPTION LIKE "%'.$searchTerm.'%") AND DATE > "'.$searchDate.'" ORDER BY "DATE" DESC;';
       } elseif ($searchTerm) {
@@ -154,6 +161,7 @@
       }
    }
 
+   // adds community post to Community table
    function addCommunityPost($title, $description, $imageLocation) {
       $db = new MyDB();
       if(!$db){
@@ -167,6 +175,7 @@
       return $ret;
    }
 
+   // gets list of users in User table - used for utility purposes only
    function getUsers($searchTerm = null) {
       
       $db = new MyDB();
@@ -194,6 +203,7 @@
       }
    }   
    
+   // adds a user to User table with all of the passed in param values
    function addUser($fname, $lname, $gender, $dob, $team, $phone, $email, $address_street, $address_suburb, $address_postcode, $address_state, $cob, $nationality, $disability, $cultural_origin, $eng_first, $lote, $emergency_name, $emergency_phone, $emergency_email, $password) {
       $array = [];
       $db = new MyDB();
@@ -206,48 +216,5 @@
       $sql ='INSERT INTO USERS (FIRST_NAME, LAST_NAME, GENDER, DOB, TEAM, PHONE, EMAIL, ADDRESS_STREET, ADDRESS_SUBURB, ADDRESS_POSTCODE, ADDRESS_STATE, BIRTH_COUNTRY, NATIONALITY, DISABILITY, CULTURAL_ORIGIN, ENGLISH_PRIMARY, LOTE, EMERGENCY_NAME, EMERGENCY_PHONE, EMERGENCY_EMAIL, PASSWORD) VALUES ("'.$fname.'", "'.$lname.'", "'.$gender.'", "'.$dob.'", "'.$team.'", "'.$phone.'", "'.$email.'", "'.$address_street.'", "'.$address_suburb.'", "'.$address_postcode.'", "'.$address_state.'", "'.$cob.'", "'.$nationality.'", "'.$disability.'", "'.$cultural_origin.'", "'.$eng_first.'", "'.$lote.'", "'.$emergency_name.'", "'.$emergency_phone.'", "'.$emergency_email.'", "'.$password.'");';
       $ret = $db->query($sql);
       return $ret;
-   }
-   
-   function addCustomer($fname, $lname, $address, $phone) {
-      
-      $db = new MyDB();
-      if(!$db){
-         echo '<script type="text/javascript">alert("'.$db->lastErrorMsg().'");</script>';
-      } else {
-         //echo "Opened database successfully\n";
-      }
-
-      $sql ='INSERT INTO CUSTOMERS (FIRSTNAME, LASTNAME, ADDRESS, PHONE) VALUES ("'.$fname.'", "'.$lname.'", "'.$address.'", "'.$phone.'");';
-      $db->query($sql);
-   }
-   
-   
-   function addProduct($pname, $man, $desc, $price) {
-      
-      $db = new MyDB();
-      if(!$db){
-         echo '<script type="text/javascript">alert("'.$db->lastErrorMsg().'");</script>';
-      } else {
-         //echo "Opened database successfully\n";
-      }
-
-      $sql ='INSERT INTO PRODUCTS (PRODUCTNAME, MANUFACTURER, DESCRIPTION, PRICE) VALUES ("'.$pname.'", "'.$man.'", "'.$desc.'", "'.$price.'");';
-      $db->query($sql);
-   }
-   
-   
-   function addEvent($ename, $loc, $desc, $date) {
-      
-      $db = new MyDB();
-      if(!$db){
-         echo '<script type="text/javascript">alert("'.$db->lastErrorMsg().'");</script>';
-      } else {
-         //echo "Opened database successfully\n";
-      }
-
-      $sql ='INSERT INTO EVENTS (EVENTNAME, LOCATION, DESCRIPTION, DATE) VALUES ("'.$ename.'", "'.$loc.'", "'.$desc.'", "'.$date.'");';
-      $db->query($sql);
-   }
-   
-      
+   }      
 ?>

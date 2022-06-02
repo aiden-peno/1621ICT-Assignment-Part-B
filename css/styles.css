@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 /************************/
 /*
 1.0 General Setup
@@ -23,6 +24,13 @@
     --white: #ffffff;
     --success-green: green;
     --contact-link-blue: #22447a;
+    --background-blue: #2E86AB; /*Possible usage*/
+    --background-light-blue: #A0C9CC; /*Possible usage*/
+    --background-lavender: #ECE4F6; /*Possible usage*/
+    --card-background-tan: #E5C595; /*Possible usage*/
+    --card-background-yellow: #F3F3CF; /*Possible usage*/
+    --card-background-grey: #F3F4F5; /*Possible usage*/
+    --soft-black: #3b444b;
 }
 
 /* 1.0 General Setup */
@@ -33,8 +41,9 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--background-gray);
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Roboto, sans-serif;
+    background-color: var(--background-light-blue);
     width: 100%;
     margin: auto;
 }
@@ -111,6 +120,7 @@ input {
     border: 1px solid var(--black);
     border-radius: 5px;
     display: block;
+    font-family: roboto, sans-serif;
 }
 
 input[type="radio"]{
@@ -126,6 +136,7 @@ select {
     margin-top: 0.1em;
     border: 1px solid var(--black);
     border-radius: 5px;
+    font-family: roboto, sans-serif;
 }
 
 textarea {
@@ -229,7 +240,9 @@ dt {
 
 #main {
     background-color: var(--white);
+    background-color: var(--background-lavender);
     padding: 1.5em 1em 1em;
+    border-radius: 25px;
 }
 
 #main section {
@@ -248,9 +261,24 @@ dt {
 #team-table-section table {
     width: 60em;
     table-layout: auto;
+    margin-top: 1em;
 }
 
 /* 6.0 Join */
+#join-form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#join-form fieldset {
+    flex: 1;
+}
+
+#join-form fieldset:last-child {
+    flex: 2.15;
+}
+
 #main .radio-section {
     /* display: block; */
     margin: 0;
@@ -352,6 +380,7 @@ dt {
 /* 8.0 Standings */
 #standings-table-section {
     overflow-x: auto;
+    margin-top: 1em;
 }
 
 /* .standings-row {
@@ -363,7 +392,7 @@ dt {
     min-width: 4em;
     height: 4em;
     z-index: 1;
-    background-color: var(--white);
+    background-color: var(--background-lavender);
 }
 
 .standings-cell2 {
@@ -371,7 +400,7 @@ dt {
     min-width: 10em;
     padding-left: 4.91em;
     height: 4em;
-    background-color: var(--white);
+    background-color: var(--background-lavender);
     gap: 1em;
 }
 
@@ -419,6 +448,7 @@ dt {
 #community-post-list {
     display: flex;
     flex-direction: column;
+    margin-top: 1em;
 }
 
 .community-post-link {
@@ -430,10 +460,16 @@ dt {
 }
 
 .community-post {
-    border: 1px solid;
+    border: 1px solid var(--soft-black);
     display: flex;
     padding: 0.5em;
     min-height: 6em;
+    background-color: var(--card-background-grey);
+    border-radius: 15px;
+}
+
+.community-post:hover {
+    transform: scale(1.01);
 }
 
 .community-post-image {
@@ -491,6 +527,28 @@ dt {
     /* color: #22447a; */
     text-decoration: none;
 }
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5em;
+}
+
+#contact-details {
+    display: inline-block;
+    flex: 4;
+    min-width: 20em;
+}
+
+#contact-enquiry-section {
+    display: inline-block;
+    flex: 2;
+}
+
+#contact-executives-section {
+    flex: 2;
+}
+
 /* 
 #contact-details a:active {
     color: #22447a;
@@ -550,6 +608,11 @@ dt {
         display: flex;
         justify-content: space-around;
     }
+
+    #join-form-section {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
 }
 
 @media screen and (min-width: 40em) {
@@ -575,6 +638,10 @@ dt {
     #team-table-section table {
         width: 100%;
         table-layout: auto;
+    }
+    
+    #join-form {
+        gap: 3em;
     }
 }
 

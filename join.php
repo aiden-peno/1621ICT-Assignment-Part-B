@@ -70,7 +70,8 @@
             <h1>Join the DTFC Family</h1>
         </section>
     </header>
-    <div id='main' class="center-content">
+    <!-- <div id='main' class="center-content"> -->
+    <div id='main'>
         <?php
             if ($showSuccessMessage) {
         ?>
@@ -84,7 +85,7 @@
         ?>
         <section id="join-form-section">
             <h2>Complete Form to Join</h2>
-            <form action="join.php" method="POST" onsubmit="return verifyPassword()">
+            <form id="join-form" action="join.php" method="POST" onsubmit="return verifyPassword()">
                 <fieldset>
                     <legend>Basic Details</legend>
                     <label for="first_name">First Name</label>
@@ -190,8 +191,8 @@
                     <input type="password" id="password" name="password" maxlength="1000" required />
                     <label for="confirm-password">Confirm Password</label>
                     <input type="password" id="confirm-password" name="confirm-password" maxlength="1000" required />
+                    <input type="submit" id="submit-button" value="Submit" />
                 </fieldset>
-                <input type="submit" id="submit-button" value="Submit" />
             </form>
         </section>
         <?php

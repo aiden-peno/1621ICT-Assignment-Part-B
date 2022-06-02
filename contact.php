@@ -41,7 +41,7 @@
             <h1>Contact Us</h1>
         </section>
     </header>
-    <div id='main'>
+    <div id='main' class="contact-container">
         <section id="contact-details">
             <?php 
                 if(isset($message)) {?>
@@ -78,7 +78,7 @@
                 </a>
             </div>
         </section>
-        <section>
+        <section id="contact-enquiry-section">
             <h2>Enquiry Form</h2>
             <form action="contact.php" method="POST">
                 <label for="enquiry-name">Your Name</label>
@@ -92,7 +92,7 @@
                 <input type="submit" id="submit" value="Submit Enquiry" />
             </form>
         </section>
-        <section>
+        <section id="contact-executives-section">
             <h2>Executives</h2>
             <dl>
                 <span itemscope itemtype="https://schema.org/Person">
