@@ -1,0 +1,44 @@
+<li>
+    <p>Round 1 - Friday 27th May</p>
+    <div class="draw-team-details">
+        <div class="draw-team-info">
+            <img class="draw-team-logo" src="./images/dolphins_logo.svg"
+                alt="Dolphins Logo" />
+            <p>Dolphin's</p>
+        </div>
+        <div>
+            <time>6:00pm</time>
+        </div>
+        <div class="draw-team-info">
+            <img class="draw-team-logo" src="./images/bulldogs_logo.svg" alt="Bulldogs Logo" />
+            <p>Bulldogs</p>
+        </div>
+    </div>
+    <p>Dolphin's Touch Football Club, Calamvale</p>
+</li>
+
+<section class="community-post">
+    <img class="community-post-image" src="./images/1296480840.svg" alt="Post Title" />
+    <div class="community-post-text">
+        <h3 class="community-post-title">Post title</h3>
+        <p class="community-post-description">THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A
+            TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A
+            TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A
+            TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A
+            TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A
+            TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS IS A TEST THIS </p>
+    </div>
+</section>
+
+<tr class="standings-row">
+    <td class="standings-cell1">2</td>
+    <td class="standings-cell2">
+        <img class="standings-team-logo" src="images/dolphins_logo.svg" alt="Dolphins Logo"/>
+        <p class="standings-team-text">Dolphins</p>
+    </td>
+    <td class="standings-cell3">20</td>
+    <td class="standings-generic-cell">1233</td>
+    <td class="standings-generic-cell">12</td>
+    <td class="standings-generic-cell">8</td>
+    <td class="standings-generic-cell">1203</td>
+</tr>
