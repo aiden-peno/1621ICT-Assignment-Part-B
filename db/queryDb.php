@@ -137,15 +137,15 @@
       } else {
       //echo "Opened database successfully\n";
       }
-      // can have no search terms, or just date, or just text, or both date and text
+      // can have no search terms, or just date, or just text, or both date and text. Order by date and post ID as no timestamp
       if ($searchTerm && $searchDate) {
-         $sql ='SELECT * FROM COMMUNITY WHERE (TITLE LIKE "%'.$searchTerm.'%" OR DESCRIPTION LIKE "%'.$searchTerm.'%") AND DATE > "'.$searchDate.'" ORDER BY "DATE" DESC;';
+         $sql ='SELECT * FROM COMMUNITY WHERE (TITLE LIKE "%'.$searchTerm.'%" OR DESCRIPTION LIKE "%'.$searchTerm.'%") AND DATE >= "'.$searchDate.'" ORDER BY "DATE" DESC, "ID" DESC;';
       } elseif ($searchTerm) {
-         $sql ='SELECT * FROM COMMUNITY WHERE TITLE LIKE "%'.$searchTerm.'%" OR DESCRIPTION LIKE "%'.$searchTerm.'%" ORDER BY "DATE" DESC;';
+         $sql ='SELECT * FROM COMMUNITY WHERE TITLE LIKE "%'.$searchTerm.'%" OR DESCRIPTION LIKE "%'.$searchTerm.'%" ORDER BY "DATE" DESC, "ID" DESC;';
       } elseif ($searchDate) {
-         $sql ='SELECT * FROM COMMUNITY WHERE DATE > "'.$searchDate.'" ORDER BY "DATE" DESC;';
+         $sql ='SELECT * FROM COMMUNITY WHERE DATE >= "'.$searchDate.'" ORDER BY "DATE" DESC, "ID" DESC;';
       } else {
-         $sql ='SELECT * FROM COMMUNITY ORDER BY "DATE" DESC;';
+         $sql ='SELECT * FROM COMMUNITY ORDER BY "DATE" DESC, "ID" DESC;';
       }
       $ret = $db->query($sql);
       $array = [];
@@ -217,4 +217,19 @@
       $ret = $db->query($sql);
       return $ret;
    }      
+
+   // updates basic user details with passed in param values
+   function updateUser($fname, $lname, $phone, $email) {
+      $array = [];
+      $db = new MyDB();
+      if(!$db){
+         echo '<script type="text/javascript">alert("'.$db->lastErrorMsg().'");</script>';
+      } else {
+         //echo "Opened database successfully\n";
+      }
+
+      $sql ='UPDATE USERS SET FIRST_NAME = "'.$fname.'", LAST_NAME = "'.$lname.'", PHONE = "'.$phone.'" WHERE "EMAIL" = "'.$email.'";';
+      $ret = $db->query($sql);
+      return $ret;
+   }
 ?>

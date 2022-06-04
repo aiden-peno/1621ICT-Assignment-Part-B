@@ -1,10 +1,10 @@
 <?php
-    if(isset($_POST["enquiry-name"])) {
-        $message = "Enquiry submitted successfully. The Club will contact you at our earliest convenience.";
-    }
+if (isset($_POST["enquiry-name"])) {
+    $message = "Enquiry submitted successfully. The Club will contact you at our earliest convenience.";
+}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Contact Us - Dolphins Touch Football Club</title>
@@ -43,17 +43,17 @@
     </header>
     <div id='main' class="contact-container">
         <section id="contact-details">
-            <?php 
-                if(isset($message)) {?>
-            <p id="enquiry-success-message"><?=$message?></p>
-            <?php 
-                } ?>
+            <?php
+            if (isset($message)) { ?>
+                <p id="enquiry-success-message"><?= $message ?></p>
+            <?php
+            } ?>
             <h2>Dolphin's Touch Football Limited</h2>
             <ul itemscope itemtype="https://schema.org/Organization">
                 <li itemprop="address" itemscope itemtype="http://schema.org/Text">
                     <span itemprop="streetAddress">Calamvale District Park, 31 Formby Street</span>,
                     <span itemprop="addressLocality">Calamvale</span>,
-                    <span itemprop="addressRegion"></span>Queensland</span>,
+                    <span itemprop="addressRegion">Queensland</span>,
                     <span itemprop="postalCode">4116</span>
                 </li>
                 <li>Tel: 1300 GO DTFC (<span itemprop="telephone">1300 463 832</span>)</li>
@@ -72,8 +72,7 @@
                 </li>
             </ul>
             <div id="map-image-container">
-                <a href="https://www.google.com/maps/place/Calamvale+District+Park/@-27.6219552,153.0357295,17z/data=!3m1!4b1!4m5!3m4!1s0x6b9145ebb4db8455:0xf02a35bd72270d0!8m2!3d-27.62196!4d153.0379182"
-                    target="_blank">
+                <a href="https://www.google.com/maps/place/Calamvale+District+Park/@-27.6219552,153.0357295,17z/data=!3m1!4b1!4m5!3m4!1s0x6b9145ebb4db8455:0xf02a35bd72270d0!8m2!3d-27.62196!4d153.0379182" target="_blank">
                     <img src="images/dtfc_location_map_resized.png" alt="Calamvale District Park" />
                 </a>
             </div>
@@ -82,11 +81,11 @@
             <h2>Enquiry Form</h2>
             <form action="contact.php" method="POST">
                 <label for="enquiry-name">Your Name</label>
-                <input type="text" id="enquiry-name" name="enquiry-name" required/>
+                <input type="text" id="enquiry-name" name="enquiry-name" required />
                 <label for="enquiry-email">Your Email</label>
-                <input type="text" id="enquiry-email" name="enquiry-email" required/>
+                <input type="text" id="enquiry-email" name="enquiry-email" required />
                 <label for="enquiry-phone">Your Phone</label>
-                <input type="text" id="enquiry-phone" name="enquiry-phone" required/>
+                <input type="text" id="enquiry-phone" name="enquiry-phone" required />
                 <label for="enquiry-query">Your Query</label>
                 <textarea id="enquiry-query" name="enquiry-query" maxlength="500" required></textarea>
                 <input type="submit" id="submit" value="Submit Enquiry" />
@@ -95,22 +94,14 @@
         <section id="contact-executives-section">
             <h2>Executives</h2>
             <dl>
-                <span itemscope itemtype="https://schema.org/Person">
-                    <dt itemprop="jobTitle">President</dt>
-                    <dd itemprop="name">Mrs Touch Football Master</dd>
-                </span>
-                <span itemscope itemtype="https://schema.org/Person">
-                    <dt itemprop="jobTitle">Vice-President</dt>
-                    <dd itemprop="name">Mr Todd Smith</dd>
-                </span>
-                <span itemscope itemtype="https://schema.org/Person">
-                    <dt itemprop="jobTitle">Secretary</dt>
-                    <dd itemprop="name">Mr Billy Brown</dd>
-                </span>
-                <span itemscope itemtype="https://schema.org/Person">
-                    <dt itemprop="jobTitle">Head Coach</dt>
-                    <dd itemprop="name">Ms Can-Kick A-Ball</dd>
-                </span>
+                <dt>President</dt>
+                <dd>Mrs Touch Football Master</dd>
+                <dt>Vice-President</dt>
+                <dd>Mr Todd Smith</dd>
+                <dt>Secretary</dt>
+                <dd>Mr Billy Brown</dd>
+                <dt>Head Coach</dt>
+                <dd>Ms Can-Kick A-Ball</dd>
             </dl>
         </section>
     </div>

@@ -1,6 +1,6 @@
 <?php
     // This page is called by checkEmailExists() from base.js to see if the entered email already exists. 
-    // Page is returned as a JSON object to the calling function, set content-type
+    // Page is returned as a JSON object to the calling function
     header('Content-Type: application/json');
 
     class MyDB extends SQLite3

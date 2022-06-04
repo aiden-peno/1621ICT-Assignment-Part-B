@@ -1,18 +1,32 @@
 <?php
-    require_once("./db/queryDb.php");
+require_once("./db/queryDb.php");
 
+if (isset($_GET["standings-filter"])) {
+    $selectedDraw = $_GET["standings-filter"];
+    $standingsInformation = getStandingsInformation($selectedDraw);
+    switch ($selectedDraw) {
+        case "U15":
+            $selectedDrawText = "Under 15 Mixed";
+            break;
+        case "U16":
+            $selectedDrawText = "Under 16 Mixed";
+            break;
+        case "U17":
+            $selectedDrawText = "Under 17 Mixed";
+            break;
+        case "Senior":
+            $selectedDrawText = "Senior Mixed";
+            break;
+    }
+} else {
+    // show senior mixed by default
+    $selectedDraw = "Senior";
+    $selectedDrawText = "Senior Mixed";
     $standingsInformation = getStandingsInformation("Senior");
-    
-    // do this stuff when you have time otherwise it's too stupid to do honestly
-    // require_once("./db/calculateDraw.php");
-    // $drawInformation = getDrawInformation("Senior");
-    // calculateDrawData($drawInformation);
-    // echo "<pre>";
-    // print_r($drawInformation);
-    // echo "</pre>";
+}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Standings - Dolphins Touch Football Club</title>
@@ -24,7 +38,7 @@
     <script src="https://kit.fontawesome.com/86459535c0.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
-
+ 
 <body>
     <header id="header">
         <div id='top-header'>
@@ -50,6 +64,15 @@
         </section>
     </header>
     <div id='main'>
+        <form action="standings.php" method="GET">
+            <label for="standings-filter">Select Team:</label>
+            <select id="standings-filter" name="standings-filter" onchange="this.form.submit()">
+                <option value="U15" <?php if ($selectedDraw == "U15") echo "selected"; ?>>Under 15 Mixed</option>
+                <option value="U16" <?php if ($selectedDraw == "U16") echo "selected"; ?>>Under 16 Mixed</option>
+                <option value="U17" <?php if ($selectedDraw == "U17") echo "selected"; ?>>Under 17 Mixed</option>
+                <option value="Senior" <?php if ($selectedDraw == "Senior") echo "selected"; ?>>Senior Mixed</option>
+            </select>
+        </form>
         <section id="standings-section">
             <h2>Senior Mixed Standings</h2>
             <div id="standings-table-section">
@@ -67,22 +90,22 @@
                     </thead>
                     <tbody>
                         <?php
-                            foreach($standingsInformation as $standings) {
+                        foreach ($standingsInformation as $standings) {
                         ?>
-                        <tr class="standings-row">
-                            <td class="standings-cell1"><?=$standings['POS']?></td>
-                            <td class="standings-cell2">
-                                <img class="standings-team-logo" src="images/<?=$standings['LOGO']?>" alt="<?=$standings['TEAM_NAME']?> Logo"/>
-                                <p class="standings-team-text"><?=$standings['TEAM_NAME']?></p>
-                            </td>
-                            <td class="standings-generic-cell"><?=$standings['PLAYED']?></td>
-                            <td class="standings-generic-cell"><?=$standings['POINTS']?></td>
-                            <td class="standings-generic-cell"><?=$standings['WINS']?></td>
-                            <td class="standings-generic-cell"><?=$standings['LOSSES']?></td>
-                            <td class="standings-generic-cell"><?=$standings['DIFFERENTIAL']?></td>
-                        </tr>
-                        <?php 
-                            }
+                            <tr class="standings-row">
+                                <td class="standings-cell1"><?= $standings['POS'] ?></td>
+                                <td class="standings-cell2">
+                                    <img class="standings-team-logo" src="images/<?= $standings['LOGO'] ?>" alt="<?= $standings['TEAM_NAME'] ?> Logo" />
+                                    <p class="standings-team-text"><?= $standings['TEAM_NAME'] ?></p>
+                                </td>
+                                <td class="standings-generic-cell"><?= $standings['PLAYED'] ?></td>
+                                <td class="standings-generic-cell"><?= $standings['POINTS'] ?></td>
+                                <td class="standings-generic-cell"><?= $standings['WINS'] ?></td>
+                                <td class="standings-generic-cell"><?= $standings['LOSSES'] ?></td>
+                                <td class="standings-generic-cell"><?= $standings['DIFFERENTIAL'] ?></td>
+                            </tr>
+                        <?php
+                        }
                         ?>
                     </tbody>
                 </table>

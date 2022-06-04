@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Our Teams - Dolphins Touch Football Club</title>
@@ -58,53 +58,57 @@
                         <td>Under 15 mixed</td>
                         <td>5pm Tuesdays</td>
                         <td>
-                            Bradley Smith 
+                            Bradley Smith
                             <p>0412 345 678</p>
                         </td>
                         <td>This team is open to players of all genders and all ages. Generally restricted to 14 years
                             or below.</td>
                         <td>Annual Joining Fee $50</td>
-                        <td>If you're interested in joining, please fill out your information at our 
-                            <a href="./join.php">Join page</a>.</td>
+                        <td>If you're interested in joining, please fill out your information at our
+                            <a href="./join.php">Join page</a>.
+                        </td>
                     </tr>
                     <tr>
                         <td>Under 16 mixed</td>
                         <td>6pm Tuesdays</td>
                         <td>
-                            Rory Hamilton 
+                            Rory Hamilton
                             <p>0498 765 432</p>
                         </td>
                         <td>This team is open to players of all genders and all ages. Generally restricted to 15 years
                             or below.</td>
                         <td>Annual Joining Fee $60</td>
-                        <td>If you're interested in joining, please fill out your information at our 
-                            <a href="./join.php">Join page</a>.</td>
+                        <td>If you're interested in joining, please fill out your information at our
+                            <a href="./join.php">Join page</a>.
+                        </td>
                     </tr>
                     <tr>
                         <td>Under 17 mixed</td>
                         <td>6pm Thursdays</td>
                         <td>
-                            Alisson Terry, Enrique Torres 
+                            Alisson Terry, Enrique Torres
                             <p>0411 123 123</p>
                         </td>
                         <td>This team is open to players of all genders and all ages. Generally restricted to 16 years
                             or below.</td>
                         <td>Annual Joining Fee $80</td>
-                        <td>If you're interested in joining, please fill out your information at our 
-                            <a href="./join.php">Join page</a>.</td>
+                        <td>If you're interested in joining, please fill out your information at our
+                            <a href="./join.php">Join page</a>.
+                        </td>
                     </tr>
                     <tr>
                         <td>Senior mixed</td>
                         <td>7pm Tuesdays</td>
                         <td>
-                            Sandra Alder, Henry Bridge 
+                            Sandra Alder, Henry Bridge
                             <p>0400 555 555</p>
                         </td>
                         <td>This team is open to players of all genders and all ages. Generally restricted to 17 years
                             old or above.</td>
                         <td>Annual Joining Fee $100</td>
-                        <td>If you're interested in joining, please fill out your information at our 
-                            <a href="./join.php">Join page</a>.</td>
+                        <td>If you're interested in joining, please fill out your information at our
+                            <a href="./join.php">Join page</a>.
+                        </td>
                     </tr>
                 </tbody>
             </table>

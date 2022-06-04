@@ -26,7 +26,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Join the Club - Dolphins Touch Football Club</title>
@@ -94,7 +94,7 @@
                     <input type="text" id="last_name" name="last_name" maxlength="20" required />
                     <label for="gender">Gender</label>
                     <select id="gender" name="gender" required>
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
                         <option value="Non-binary">Non-binary</option>
@@ -103,7 +103,7 @@
                     <input type="date" id="dob" name="dob" required />
                     <label for="team">Select The Team You Wish To Join</label>
                     <select id="team" name="team" required>
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Under 15 Mixed">Under 15 Mixed</option>
                         <option value="Under 16 Mixed">Under 16 Mixed</option>
                         <option value="Under 17 Mixed">Under 17 Mixed</option>
@@ -116,7 +116,7 @@
                     <input type="text" id="phone" name="phone" maxlength="20" required />
                     <p id="email-valid-p" class="field-valid-message"></p>
                     <label for="email">Email Address</label>
-                    <input type="text" id="email" name="email" maxlength="100" required onBlur="checkEmailExists()"/>
+                    <input type="text" id="email" name="email" maxlength="100" required onBlur="checkEmailExists()" />
                     <label for="street_address">Street Address</label>
                     <input type="text" id="street_address" name="street_address" maxlength="100" required />
                     <label for="suburb">Suburb</label>
@@ -125,7 +125,7 @@
                     <input type="text" id="postcode" name="postcode" maxlength="4" pattern="[0-9]*" required />
                     <label for="state">State</label>
                     <select id="state" name="state" required>
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Queensland">Queensland</option>
                         <option value="Australian Capital Territory">Australian Capital Territory</option>
                         <option value="New South Wales">New South Wales</option>
@@ -140,39 +140,39 @@
                     <legend>Cultural Details</legend>
                     <label for="birth_country">Country of Birth</label>
                     <select id="birth_country" name="birth_country" required>
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Australia">Australia</option>
                     </select>
                     <label for="nationality">Nationality</label>
                     <select id="nationality" name="nationality" required>
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Australian">Australian</option>
                     </select>
                     <label for="disability">Enter any Disability Information</label>
                     <input type="text" id="disability" name="disability" maxlength="200"/>
-                    <label for="cultural_origin">Aborinal/Torres Strait Islander Origin</label>
-                    <section class="radio-section">
+                    <label>Aborinal/Torres Strait Islander Origin</label>
+                    <div class="radio-section">
                         <input type="radio" id="aboriginal" value="Aboriginal" name="cultural_origin" required />
                         <label for="aboriginal" class="radio_label">Aboriginal</label>
-                    </section>
-                    <section class="radio-section">
+                    </div>
+                    <div class="radio-section">
                         <input type="radio" id="tores_strait" value="Torres Strait Islander" name="cultural_origin" />
                         <label for="tores_strait" class="radio_label">Torres Strait Islander</label>
-                    </section>
-                    <section class="radio-section">
+                    </div>
+                    <div class="radio-section">
                         <input type="radio" id="cultural_none" value="None" name="cultural_origin" />
                         <label for="cultural_none" class="radio_label">None</label>
-                    </section>
+                    </div>
 
                     <label for=english_spoken_language>Is English Your Primary Spoken Language</label>
                     <select id="english_spoken_language" name="english_spoken_language" required onchange="toggleSpokenLanguage()">
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                     <label for="spoken_language" id="spoken-language-label" class="display-none">Language Other Than English</label>
                     <select id="spoken_language" name="spoken_language" class="display-none">
-                        <option value=""></option>
+                        <option value="">Please select...</option>
                     </select>
                 </fieldset>
                 <fieldset>

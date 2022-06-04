@@ -180,23 +180,35 @@ function toggleSpokenLanguage() {
     }
 }
 
+function toggleAndResetDetailsForm(callingElement) {
+    detailsElement = document.getElementById("basic-details-div");
+    detailsLink = document.getElementById("basic-details-update-link");
+    detailsFormElement = document.getElementById("basic-details-form");
+
+    // toggles visibility of spoken language field
+    if (detailsElement.className == "display-block" || detailsElement.className == "") {
+        detailsElement.className = "display-none";
+        detailsLink.className = "display-none";
+        detailsFormElement.className = "display-block";
+    } else {
+        detailsElement.className = "display-block";
+        detailsLink.className = "display-block";
+        detailsFormElement.className = "display-none";
+    }
+
+    // if clicked from reset button, reset form fields
+    if (callingElement) {
+        firstNameField = document.getElementById("first-name");
+        lastNameField = document.getElementById("last-name");
+        phoneNumberField = document.getElementById("phone-number");
+
+        firstNameField.value = "";
+        lastNameField.value = "";
+        phoneNumberField.value = "";
+    }
+}
+
 // simulates navigation to passed in url
 function clearUrl(url) {
     window.location.href = url;
 }
-
-// function retrieveDrawInfo(team) {
-//     // call php via ajax
-//     jQuery.ajax({
-//         type: "POST",
-//         url: './db/draw.php',
-//         data: {team: [team]}
-
-//         // success: function (obj, textstatus) {
-
-//         // },
-//         // error: function (obj1, str, obj2){
-
-//         // }
-//     });
-// }
